@@ -21,15 +21,31 @@ Simple example using Git actions + Argo CD + K8S + Docker and  GO lang
 6. Make a Dockerfile using multistage build.
 7. Build image and send to registry if is necessary (in this case I will maintain local) `docker build -t {myname}/{imagename}:{tag} .`.
 8. Run image with command `docker run --rm -p 9090:9090`.
-9. Insert in line 16 of file `k8s/deployment.yaml`your image address and in line 22 the port of application.
-10. To run deployment in your kubernetes cluster use the command: `kubectl apply -f k8s/deployment.yaml`.
-11. To see if deployment is running use `kubectl get pods`.
-12. 
-13. 
+9. Push image in your DockerHub account (You can use any registry that you wish), first make login in your account using  `docker login`, second run this command: `docker push {myname}/{imagename}:{tag}`.
+10. Insert in line 16 of file `k8s/deployment.yaml`your image address and in line 22 the port of application.
+11. To run deployment in your kubernetes cluster use the command: `kubectl apply -f k8s/deployment.yaml`.
+12. To see if deployment is running use `kubectl get pods`, if you not add -n and namespace name kubernetes show only for default namespace.
+13. Make a service in `k8s/service.yaml` with data about deployments, addin a port and name for your app, in my case i use goaap.
+14. Run command `kubectl apply -f k8s/service.yaml`.
+15. To show services you can use command `kubectl get svc`.
+16. To test if service are running use command: `kubectl port-forward svc/goapp 9090:9090`, after this you can access in your localhost:9090 at webrowser.
+Nice you have a application running in kubernetes.  
+
+# Kustomize
+In real world we have a necessity to use a versioning of images, to use it with more easy way, kustomize are tool that help you to make it.
+
+1. Make a `kustomization.yaml` in `k8s` folder.
+2. Add parameters that you need in kustomize file.
+3. To build and update file you can use command into k8s folder: `kustomize build`
+
+# Github Actions
+
+
+
 99. To delete cluster `k3d cluster delete {clustername}`.
 
 # About Dockerfile
-Explain about dockerfile for generating go image
+Little explain about dockerfile for generating go image using multistage build.  
 
 ```Dockerfile
 # Multistage build
@@ -53,5 +69,7 @@ Materials used to reference:
 
 [Deploy contínuo com GitOps e ArgoCD](https://www.youtube.com/watch?v=63HGUgQXD1w)
 [k3d Docs](https://k3d.io/v5.0.1/)
+[Kustomize](https://kustomize.io/)
 [ArgoCD](https://github.com/argoproj/argo-cd)
 [ArgoCD Get Started](https://argo-cd.readthedocs.io/en/stable/)
+[FullCycle reference repo](https://github.com/codeedu/argocd-fullcycle)

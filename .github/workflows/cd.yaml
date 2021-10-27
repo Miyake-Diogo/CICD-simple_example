@@ -1,0 +1,20 @@
+name: CD 
+on: 
+  push: 
+    brances: [main]
+
+jobs: 
+  build: 
+    name: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout 
+        uses: actions/checkout@v2
+
+      - name: build image and push to docker hub   
+        uses: docker/build-push-action@v1.1.0
+        with: 
+          username: miyakediogo
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: miyakediogo/argocd-k8s-server
+          tags: ${{ github.sha }}, latest
