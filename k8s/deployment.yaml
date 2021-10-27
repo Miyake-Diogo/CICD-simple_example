@@ -13,10 +13,10 @@ spec:
     spec:
       containers:
       - name: goapp
-        image: miyake-diogo/argocd-k8s-server:latest 
+        image: miyakediogo/argocd-k8s-server:latest 
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "600m"
         ports:
         - containerPort: 9090
