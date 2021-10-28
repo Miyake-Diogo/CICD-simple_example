@@ -9,4 +9,4 @@ namespace: goapp
 images:
 - name: goapp
   newName: miyakediogo/argocd-k8s-server
-  newTag: latest
+  newTag: 710bfa53b11a6e6fc45efc67c5372dd35183e250
