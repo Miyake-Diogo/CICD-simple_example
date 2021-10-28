@@ -39,6 +39,10 @@ In real world we have a necessity to use a versioning of images, to use it with 
 3. To build and update file you can use command into k8s folder: `kustomize build`
 
 # Github Actions
+1. Catch a token in dockerhub and add in github repository
+2. Make a push and see in git actions your CD running.
+
+For Now Update a file and add a Deploy stage in workflow yaml. 
 
 
 
@@ -67,9 +71,10 @@ CMD ["./server"]
 # Reference
 Materials used to reference:
 
-[Deploy contínuo com GitOps e ArgoCD](https://www.youtube.com/watch?v=63HGUgQXD1w)
+[FullCycle - Deploy contínuo com GitOps e ArgoCD](https://www.youtube.com/watch?v=63HGUgQXD1w)
+[FullCycle - Reference repo](https://github.com/codeedu/argocd-fullcycle)
+
 [k3d Docs](https://k3d.io/v5.0.1/)
 [Kustomize](https://kustomize.io/)
 [ArgoCD](https://github.com/argoproj/argo-cd)
 [ArgoCD Get Started](https://argo-cd.readthedocs.io/en/stable/)
-[FullCycle reference repo](https://github.com/codeedu/argocd-fullcycle)
